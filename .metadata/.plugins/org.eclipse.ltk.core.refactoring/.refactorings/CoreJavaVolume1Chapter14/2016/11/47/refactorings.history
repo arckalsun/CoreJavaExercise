@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move 2 elements to &apos;CoreJavaVolume1Chapter14&apos;&#x0D;&#x0A;- Original project: &apos;CoreJavaVolume1Chapter14&apos;&#x0D;&#x0A;- Destination element: &apos;CoreJavaVolume1Chapter14&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     alice30.txt&#x0D;&#x0A;     crsto10.txt&#x0D;&#x0A;- Update references to refactored element" description="Move files" destination="=CoreJavaVolume1Chapter14" element1="src/swingWorker/alice30.txt" element2="src/swingWorker/crsto10.txt" files="2" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1479142539006" units="0" version="1.0"/>
+</session>

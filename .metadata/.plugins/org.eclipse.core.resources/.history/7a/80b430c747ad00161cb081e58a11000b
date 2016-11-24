@@ -1,0 +1,52 @@
+package socket;
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+/**
+ * This program make a socket connection to the atomic clock in Boulder,
+ * Colorado, and prints the time that the server sends.
+ * 
+ * @author john
+ *
+ */
+public class SocketTest
+{
+
+	public static void main(String[] args) throws IOException
+	{
+		String hostname;
+		int port = 37;
+		
+		if (args.length == 0)
+			hostname = "time-c.nist.gov";
+		else if (args.length >= 2)
+		{
+			hostname = args[0];
+			port = Integer.parseInt(args[1]);
+		} else
+			hostname = args[0];
+
+		try (Socket s = new Socket())
+		{
+			s.connect(new InetSocketAddress(hostname, port), 10000);
+			
+			InputStream inStream = s.getInputStream();
+			Scanner in = new Scanner(inStream);
+			StringBuilder builder = new StringBuilder();
+			char ch = '\u2122';
+			builder.append(ch);
+		/*	while (in.hasNextByte())
+			{
+				//String line = in.nextLine();
+				byte b = in.nextByte();
+				builder.append(b);
+				
+			}*/
+			System.out.print(builder.toString());
+		}
+
+	}
+
+}
