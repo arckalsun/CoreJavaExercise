@@ -67,7 +67,13 @@ public class BorrowBook extends JPanel implements ActionListener
 		jlArray[1].setBounds(20 +300, 60, 140, 20);
 		jpt.add(jtxtArray[1]);
 		jtxtArray[1].setBounds(120 +300, 60, 140, 20);
-
+		if (Root.isStudent)
+		{
+			jtxtArray[1].setText(Root.stuNo);
+			jtxtArray[1].setEditable(false);
+		}
+		
+		
 		jsp.setTopComponent(jpt);
 		jsp.setBottomComponent(jscrollpane);
 		jsp.setDividerSize(4);
@@ -83,7 +89,12 @@ public class BorrowBook extends JPanel implements ActionListener
 		{
 			if (jtxtArray[1].getText().equals(""))//学号为空
 			{
-				JOptionPane.showMessageDialog(this, "输入不能为空!!!", "消息",JOptionPane.INFORMATION_MESSAGE);
+				JOptionPane.showMessageDialog(this, "输入学号不能为空!!!", "消息",JOptionPane.INFORMATION_MESSAGE);
+				return;
+			}
+			if (jtxtArray[0].getText().equals(""))//学号为空
+			{
+				JOptionPane.showMessageDialog(this, "输入书号不能为空!!!", "消息",JOptionPane.INFORMATION_MESSAGE);
 				return;
 			}
 			sql = "select * from STUDENT where StuNO=" + Integer.parseInt(jtxtArray[1].getText().trim());
@@ -101,7 +112,7 @@ public class BorrowBook extends JPanel implements ActionListener
 				{
 					String stuName = db.rs.getString(2).trim();
 					String classes = db.rs.getString(5).trim();
-					if(db.rs.getString(8).trim().equals("no"))//没有权限
+					if(db.rs.getString(6).trim().equals("否"))//没有权限
 					{
 						JOptionPane.showMessageDialog(this, "您没有权限","消息",JOptionPane.INFORMATION_MESSAGE);
 					}
@@ -166,12 +177,14 @@ public class BorrowBook extends JPanel implements ActionListener
 									JOptionPane.showMessageDialog(this, "此书已被预约,不能借!!!","消息",JOptionPane.INFORMATION_MESSAGE);
 								else
 								{
+									Calendar calendar = Calendar.getInstance();
 									Date now = new Date();
+									calendar.setTime(now);
 									sql = "update book set Borrowed='是' where BookNO="+Integer.parseInt(jtxtArray[0].getText().trim());
 									db.updateDB(sql);
 									JOptionPane.showMessageDialog(this, "借书成功","消息",JOptionPane.INFORMATION_MESSAGE);
 									sql="insert into RECORD values(" + Integer.parseInt(jtxtArray[0].getText().trim()) +"," + Integer.parseInt(jtxtArray[1].getText().trim()) +",'"+
-									(now.getYear()+1900) +"." +(now.getMonth() +1)+"." + now.getDate()+"', '" +(now.getYear()+1900) +"." +(now.getMonth() +2)+"." + now.getDate()+"', '否','否')";
+									(calendar.get(Calendar.YEAR)) +"." +(calendar.get(Calendar.MONTH)  +1)+"." + calendar.get(Calendar.DAY_OF_MONTH) +"', '" +(now.getYear()+1900) +"." +(now.getMonth() +2)+"." + now.getDate()+"', '否','否')";
 									db.updateDB(sql);
 								}
 							}

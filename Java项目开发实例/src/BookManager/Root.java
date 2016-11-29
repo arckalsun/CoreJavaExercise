@@ -23,12 +23,13 @@ public class Root extends JFrame
 	JTree jt = new JTree(dtm);
 	JScrollPane jsp = new JScrollPane(jt);
 
-	boolean isStudent = false;
+	public static boolean isStudent = false;
 	String mgNo;
-	String stuNo;
+	public static String stuNo;
 	private JSplitPane jsplr = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, true);
 	private JPanel jp = new JPanel();
-	Image image ;// 加载图片Image对象
+	ImageIcon imageIcon ;// 加载图片Image对象
+	Image image = new ImageIcon("ico.png").getImage();
 	//ImageIcon ii = new ImageIcon(image);
 	private JLabel jlRoot ;
 	private Manager mg;
@@ -56,10 +57,25 @@ public class Root extends JFrame
 			this.setStudent();
 		}
 	
-		image = new ImageIcon("tsg1.jpg").getImage();
+		imageIcon = new ImageIcon("tsg1.jpg");
 		
-		ImageIcon ii = new ImageIcon(image);
-		 jlRoot = new JLabel(ii);
+		
+		 jlRoot = new JLabel(imageIcon)
+				 {
+			 @Override
+			protected void paintComponent(Graphics g)
+			{
+				// TODO Auto-generated method stub
+				super.paintComponent(g);
+				imageIcon.setImage(imageIcon.getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
+				this.setIcon(imageIcon);
+				
+				Graphics2D g2 = (Graphics2D) g;
+				g2.setFont(new Font("Serif",Font.BOLD,36));
+				g2.drawString("图书馆管理系统", 50, 50);
+				
+			}
+				 };
 		 
 		this.initJp();
 
@@ -73,11 +89,12 @@ public class Root extends JFrame
 		jsplr.setRightComponent(jp);
 		jsplr.setDividerLocation(150);
 		jsplr.setDividerSize(4);
-		jlRoot.setFont(new Font("Courier", Font.PLAIN, 30));
+		jsplr.setResizeWeight(0.2);
+		//jlRoot.setFont(new Font("Courier", Font.PLAIN, 30));
 		jlRoot.setHorizontalAlignment(JLabel.CENTER);
 		jlRoot.setVerticalAlignment(JLabel.CENTER);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Image image = new ImageIcon("ico.gif").getImage();
+		
 	/*	Graphics g = image.getGraphics();
 		g.setFont(new Font("Serif",Font.BOLD,36));
 		g.drawString("图书馆管理系统", 100, 200);*/

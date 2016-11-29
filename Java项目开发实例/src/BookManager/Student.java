@@ -35,8 +35,8 @@ public class Student extends JPanel implements ActionListener
 		head.add("性别");
 		head.add("班级");
 		head.add("院系");
-		head.add("密码");
 		head.add("借书权限");
+		head.add("密码");
 	};
 	Vector<Vector> data = new Vector<>();
 

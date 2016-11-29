@@ -1,4 +1,5 @@
 package BookManager;
+import java.awt.Image;
 import java.awt.event.*;
 import javax.swing.*;
 
@@ -15,6 +16,7 @@ public class Login extends JFrame implements ActionListener
 			new JTextField("127.0.0.1"), new JTextField("3306"), new JTextField("1001")
 	};
 	private JPasswordField jpassword = new JPasswordField("1001");
+	Image image = new ImageIcon("ico.png").getImage();
 	String sql;
 	DataBase db;
 
@@ -47,6 +49,7 @@ public class Login extends JFrame implements ActionListener
 		this.setTitle("µÇÂ¼");
 		this.setResizable(false);
 		this.setBounds(100,100,400,350);
+		this.setIconImage(image);
 		this.setVisible(true);
 	}
 	@Override
