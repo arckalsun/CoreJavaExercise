@@ -47,6 +47,8 @@
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<list key="WizardFileSystemResourceImportPage1.STORE_SOURCE_NAMES_ID">
+			<item value="F:\Java\corejava9\v2ch06\treeRender"/>
+			<item value="F:\Java\corejava9\v2ch06\treeEdit"/>
 			<item value="F:\Java\corejava9\v2ch03\interruptible"/>
 			<item value="F:\Java\corejava9\v2ch02\write"/>
 			<item value="F:\Java\corejava9\v2ch02\xpath"/>
@@ -65,8 +67,6 @@
 			<item value="F:\Java\corejava9\v1ch14\bounceThread"/>
 			<item value="F:\Java\corejava9\v1ch13\map"/>
 			<item value="F:\Java\corejava9\v1ch13\treeSet"/>
-			<item value="F:\Java\corejava9\v1ch11\debugger"/>
-			<item value="F:\Java\corejava9\v1ch11\eventTracer"/>
 		</list>
 	</section>
 </section>
